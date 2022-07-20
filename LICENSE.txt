@@ -1,4 +1,4 @@
-Copyright © <YEAR>, Adobe Inc. and its licensors. All rights reserved.
+Copyright 2022, Adobe Inc. and its licensors. All rights reserved.
 
 ADOBE RESEARCH LICENSE
  
