@@ -1,4 +1,5 @@
 # Skeleton-free Pose Transfer for Stylized 3D Characters
+![teaser](assets/teaser.png "teaser")
 
 This is the official repository for ECCV 2022 paper _Skeleton-free Pose Transfer for Stylized 3D Characters_.  
 
