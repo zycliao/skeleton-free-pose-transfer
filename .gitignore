@@ -5,4 +5,3 @@ build/
 mesh_core_cython.cpp
 *.so
 *.pyd
-*.pyx

@@ -131,8 +131,8 @@ class AmassDataset(Dataset):
         _, _, s2, gdr2 = self.get_data(idx2)
         theta2 = theta1
 
-        v0_1, joints0_1 = self.smpl(np.zeros([1, 156]), s1[None], [gdr1], ret_J=True, no_lbs=True)
-        v0_2, joints0_2 = self.smpl(np.zeros([1, 156]), s2[None], [gdr2], ret_J=True, no_lbs=True)
+        v0_1, joints0_1 = self.smpl(np.zeros([1, 156]), s1[None], [gdr1], ret_J=True)
+        v0_2, joints0_2 = self.smpl(np.zeros([1, 156]), s2[None], [gdr2], ret_J=True)
         v0_1 = v0_1[0]
         v0_2 = v0_2[0]
         joints0_1 = joints0_1[0]
@@ -284,7 +284,7 @@ class AmassSeqDataset(Dataset):
         theta1, beta1, gdr1 = self.get_data(idx1)
 
         tpose_v1, joints0_1 = self.smpl(np.zeros([1, 156]), beta1[None], [-1],
-                                    ret_J=True, no_lbs=False)
+                                    ret_J=True)
         tpose_v1 = tpose_v1[0]
         joints0_1 = joints0_1[0]
         tpose_v1, joints0_1 = torch2np(tpose_v1, joints0_1)

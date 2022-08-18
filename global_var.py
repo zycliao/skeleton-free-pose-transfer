@@ -16,7 +16,7 @@ RADOM_SEED = 2021
 
 os.makedirs(TEMP_DIR, exist_ok=True)
 
-
+gdr2num = {'male': -1, 'neutral': 0, 'female': 1}
 MIXAMO_JOINTS = [ "Hips",   # 0
   "LeftFoot",               # 1
   "Spine1",                 # 2
