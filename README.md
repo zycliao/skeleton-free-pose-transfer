@@ -3,6 +3,8 @@
 
 This is the official repository for ECCV 2022 paper _Skeleton-free Pose Transfer for Stylized 3D Characters_.  
 
+[\[Paper\]](https://zycliao.com/sfpt/sfpt.pdf) [\[Project page\]](https://zycliao.com/sfpt)  
+
 More detailed documentation coming soon!
 
 ## Prerequisites
