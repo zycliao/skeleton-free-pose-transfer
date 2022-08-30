@@ -63,11 +63,6 @@ class AmassDataset(Dataset):
             self.canonical_f = self.smpl.low_f
             self.d_weights = self.smpl.simplify(self.d_weights)
             self.s_weights = sparse.csr_matrix(self.d_weights)
-            geo_info = np.load(os.path.join(SMPLH_PATH, 'geodesic_simplify.npz'))
-            self.geo_edge_index = np.stack([geo_info["rows"].astype(np.int32), geo_info["cols"].astype(np.int32)], 0)
-            self.geo_edge_index = torch.from_numpy(self.geo_edge_index).long()
-        else:
-            self.geo_edge_index = None
 
         parents = smpl.models['male']['kintree_table'][0].astype(int)
         parents[0] = -1
@@ -191,12 +186,12 @@ class AmassDataset(Dataset):
 
         return Data(v0=v0_1, v1=v1, tpl_edge_index=self.tpl_edge_index, triangle=self.canonical_f[None], name=str(index),
                     aug_v0=aug_v0_1, aug_v1=aug_v1, aug_T=aug_T1, aug_joints=aug_joints0_1[None],
-                    feat0=normal_v0_1, feat1=normal_v1, geo_edge_index=self.geo_edge_index,
+                    feat0=normal_v0_1, feat1=normal_v1,
                     joints=joints0_1[None], weights=weights, parents=parents, theta=theta1[None],
                     num_nodes=len(v0_1), dataset=0), \
                Data(v0=v0_2, v1=v2, tpl_edge_index=self.tpl_edge_index, triangle=self.canonical_f[None], name=str(index),
                     aug_v0=aug_v0_2, aug_v1=aug_v2, aug_T=aug_T2, aug_joints=aug_joints0_2[None],
-                    feat0=normal_v0_2, feat1=normal_v2, geo_edge_index=self.geo_edge_index,
+                    feat0=normal_v0_2, feat1=normal_v2,
                     joints=joints0_2[None], weights=weights, parents=parents, theta=theta2[None],
                     num_nodes=len(v0_2), dataset=0)
 
@@ -260,9 +255,6 @@ class AmassSeqDataset(Dataset):
             self.canonical_f = self.smpl.low_f
             self.d_weights = self.smpl.simplify(self.d_weights)
             self.s_weights = sparse.csr_matrix(self.d_weights)
-            geo_info = np.load(os.path.join(SMPLH_PATH, 'geodesic_simplify.npz'))
-            self.geo_edge_index = np.stack([geo_info["rows"].astype(np.int32), geo_info["cols"].astype(np.int32)], 0)
-            self.geo_edge_index = torch.from_numpy(self.geo_edge_index).long()
         self.canonical_f = self.canonical_f.astype(int)
 
         parents = smpl.models['male']['kintree_table'][0].astype(int)
@@ -318,7 +310,7 @@ class AmassSeqDataset(Dataset):
             v0=v0_1, v1=v_1,
             feat0=normal_v0_1, feat1=normal_v1,
             tpl_edge_index=self.tpl_edge_index, face=torch.from_numpy(self.canonical_f.T.astype(int)).long(),
-            geo_edge_index=self.geo_edge_index, triangle=self.canonical_f[None],
+            triangle=self.canonical_f[None],
             weights=self.d_weights,
             theta_1=torch.from_numpy(theta1[None]).float(), beta_1=torch.from_numpy(beta1[None]).float(),
             gender_1=gdr1, num_nodes=len(v1))

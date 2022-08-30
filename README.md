@@ -30,7 +30,7 @@ Checkt the results in `./demo/results` and they should be the same as meshes in 
 
 To try with your own data, make sure the number of triangles is around 5K (not a strict requirement) and the orientation of the character is the same as demo data (front: +Z, up: +Y)
 
-## Training
+## Trainingg
 
 More documentations about training will come soon.
 

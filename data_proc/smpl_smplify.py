@@ -1,3 +1,4 @@
+import numpy as np
 from utils.o3d_wrapper import Mesh
 from utils.geometry import get_nearest_face, barycentric
 from global_var import *

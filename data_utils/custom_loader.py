@@ -4,7 +4,7 @@ import torch
 from torch_geometric.data import Dataset, Data
 from torch_geometric.utils import add_self_loops
 from utils.lbs import lbs
-from utils.geometry import get_tpl_edges, fps_np, get_normal, calc_surface_geodesic
+from utils.geometry import get_tpl_edges, fps_np, get_normal
 from utils.o3d_wrapper import Mesh, MeshO3d
 from global_var import *
 
