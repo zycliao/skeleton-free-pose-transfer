@@ -77,8 +77,8 @@ class SMPL2Mesh:
                 posedirs = self.models[gdr]['posedirs']
                 posedirs = posedirs.reshape(posedirs.shape[0]*3, -1).T
                 posedirs = torch.tensor(posedirs, dtype=torch.float32)
-                if no_psd:
-                    posedirs = 0 * posedirs
+                # if no_psd:
+                #     posedirs = 0 * posedirs
 
                 J_regressor = torch.tensor(self.models[gdr]['J_regressor'], dtype=torch.float32)
 

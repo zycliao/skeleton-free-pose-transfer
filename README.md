@@ -30,12 +30,25 @@ Checkt the results in `./demo/results` and they should be the same as meshes in 
 
 To try with your own data, make sure the number of triangles is around 5K (not a strict requirement) and the orientation of the character is the same as demo data (front: +Z, up: +Y)
 
-## Trainingg
+### Demo with SMPL
+Download SMPLH model from [here](https://mano.is.tue.mpg.de/) and extract.
+Set the `SMPLH_PATH` in `global_var.py` to the folder it is extracted to.
+
+Then, run
+```
+python demo_smpl.py
+```
+
+## Training
 
 More documentations about training will come soon.
 
 ### Data Preparation
 All paths are defined in `global_var.py`
+#### SMPL
+Download SMPLH model from [here](https://mano.is.tue.mpg.de/) and extract.
+Set the `SMPLH_PATH` in `global_var.py` to the folder it is extracted to.
+
 #### Mixamo
 1. Download [Mixamo characters](https://www.mixamo.com/#/?page=1&type=Character) of T-pose. 
 2. Download [Mixamo animations](https://www.mixamo.com/#/?page=1&type=Motion%2CMotionPack). Note that we don't use character-specific animations. 

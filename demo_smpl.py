@@ -1,23 +1,44 @@
 import os
+
+import numpy as np
 from tqdm import tqdm
 import torch
 from torch_geometric.data import DataLoader
 from kornia.geometry.conversions import QuaternionCoeffOrder
+
+import global_var
+
 wxyz = QuaternionCoeffOrder.WXYZ
 from models.networks import PerPartEncoderTpl, PerPartDecoder, HandlePredictorSWTpl
 from models.ops import handle2mesh, get_transformation, arap_smooth
+from models.smpl import SMPL2Mesh
 from utils.o3d_wrapper import Mesh
 from data_utils.custom_loader import CustomDataset, CustomMotionDataset
 
 
 if __name__ == '__main__':
-    use_smooth = True
-    save_dir = './demo/results'
+    use_smooth = False
+    save_dir = './demo/results_smpl'
     ckpt_path = "./demo/ckpt.pth"
-    src_data_dir = "./demo/src_data"
-    dst_data_dir = "./demo/dst_data"
+    src_data_dir = "./demo/src_data_smpl"
+    dst_data_dir = "./demo/dst_data_smpl"
 
     os.makedirs(save_dir, exist_ok=True)
+    os.makedirs(src_data_dir, exist_ok=True)
+    os.makedirs(os.path.join(dst_data_dir, 'obj_remesh'), exist_ok=True)
+
+    smpl = SMPL2Mesh(global_var.SMPLH_PATH)
+    pose0 = np.zeros([1, 156])
+    pose1 = np.zeros([1, 156])
+    pose1[0, 18*3+1] = -np.pi/2
+    shape1 = np.random.normal(loc=0, scale=1, size=[1, 16])
+    shape2 = np.random.normal(loc=0, scale=1, size=[1, 16])
+    src0 = smpl(pose0, shape1, [1])
+    src1 = smpl(pose1, shape1, [1])
+    dst = smpl(pose0, shape2, [1])
+    Mesh(v=src0[0].numpy(), f=smpl.f).write_obj(os.path.join(src_data_dir, 'rest.obj'))
+    Mesh(v=src1[0].numpy(), f=smpl.f).write_obj(os.path.join(src_data_dir, '1.obj'))
+    Mesh(v=dst[0].numpy(), f=smpl.f).write_obj(os.path.join(dst_data_dir, 'obj_remesh', 'dst1.obj'))
 
     input_dim = 6
     num_feature = 128*2+7

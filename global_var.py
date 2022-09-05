@@ -2,7 +2,7 @@ import os
 
 # Please update the below to your own paths
 AMASS_PATH = "./amass/processed"
-SMPLH_PATH = "./amass/body_models/smplh"
+SMPLH_PATH = "./smplh"
 RIGNET_PATH = './rignet_models'
 CUSTOM_PATH = './custom'
 MIXAMO_PATH = './mixamo'
