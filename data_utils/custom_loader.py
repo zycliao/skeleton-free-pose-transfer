@@ -44,6 +44,7 @@ class CustomDataset(Dataset):
         normal_v0 = get_normal(v0, f)
         return Data(v0=v0, tpl_edge_index=tpl_edge_index, triangle=f[None].astype(int),
                     feat0=normal_v0,
+                    center=torch.from_numpy(center).float(), scale=torch.from_numpy(np.array(scale)).float(),
                     name=name, num_nodes=len(v0))
 
     def get_by_name(self, name):

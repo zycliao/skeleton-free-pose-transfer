@@ -31,8 +31,8 @@ if __name__ == '__main__':
     pose0 = np.zeros([1, 156])
     pose1 = np.zeros([1, 156])
     pose1[0, 18*3+1] = -np.pi/2
-    shape1 = np.random.normal(loc=0, scale=1, size=[1, 16])
-    shape2 = np.random.normal(loc=0, scale=1, size=[1, 16])
+    shape1 = np.random.normal(loc=0, scale=2, size=[1, 16])
+    shape2 = np.random.normal(loc=0, scale=2, size=[1, 16])
     src0 = smpl(pose0, shape1, [1])
     src1 = smpl(pose1, shape1, [1])
     dst = smpl(pose0, shape2, [1])
@@ -95,8 +95,8 @@ if __name__ == '__main__':
                                         dst_data.v0, dst_data.tpl_edge_index, 0.5)
 
             pred_v = handle2mesh(pred_disp, hd0_mean, region_score0, dst_data.batch, dst_data.v0)
+            pred_v = pred_v * dst_data.scale + dst_data.center
             r_f = dst_data.triangle[0][0]
-            v0 = dst_data.v0.cpu().numpy()
             pred_v = pred_v.cpu().numpy()
             Mesh(v=pred_v, f=r_f).write_obj(os.path.join(save_dir, f'{dst_data.name[0]}_{src_data.name[0]}.obj'))
 
