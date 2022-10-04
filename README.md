@@ -50,6 +50,7 @@ Download SMPLH model from [here](https://mano.is.tue.mpg.de/) and extract.
 Set the `SMPLH_PATH` in `global_var.py` to the folder it is extracted to.
 
 #### Mixamo
+The training/testing split we used for the paper can be downloaded [here](https://drive.google.com/file/d/1Brw-DwvK77yRHtdO7Jb3epHho-zhIIj_/view?usp=sharing).
 1. Download [Mixamo characters](https://www.mixamo.com/#/?page=1&type=Character) of T-pose. 
 2. Download [Mixamo animations](https://www.mixamo.com/#/?page=1&type=Motion%2CMotionPack). Note that we don't use character-specific animations. 
    Thus, simply download animations for one character.
