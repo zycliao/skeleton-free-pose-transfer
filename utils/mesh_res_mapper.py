@@ -9,7 +9,7 @@ class MeshResMapper(object):
         Given two aligned meshes (m and orig_m) with different triangulations, this class finds their mapping.
         Usually orig_m is the original mesh and m is a remeshed version of orig_m.
         When m deforms, the corresponding orig_m can be obtained using upsample().
-        :param v, f: The vertex and face of v. Shape: (N, 3), (M, 3)
+        :param v, f: The vertex and face of m. Shape: (N, 3), (M, 3)
         :param orig_v: The vertex of orig_m. Shape: (N2, 3)
         :param mapper_path: a npz path that contains all the mapping parameters.
                             when it is provided, other arguments can be None. Such npz file can be saved using save().
