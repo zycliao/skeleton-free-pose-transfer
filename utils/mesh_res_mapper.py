@@ -14,7 +14,7 @@ class MeshResMapper(object):
         :param mapper_path: a npz path that contains all the mapping parameters.
                             when it is provided, other arguments can be None. Such npz file can be saved using save().
         """
-        if mapper_path is not None:
+        if mapper_path is None:
             assert v is not None and orig_v is not None and f is not None
             if isinstance(v, torch.Tensor):
                 v = v.detach().cpu().numpy()
