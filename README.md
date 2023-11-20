@@ -58,7 +58,7 @@ The training/testing split we used for the paper can be downloaded [here](https:
    Unfortunately, I used some internal codes for this part, which cannot be open-sourced.
    You might have to write the conversion yourself.
 4. Put characters of T-pose in `{MIXAMO_PATH}/obj` in `.obj` format. 
-5. Put ground truth skinning information of characters in `{MIXAMO_PATH}/rig_info`.
+5. Extract skinning information running `data_proc/mixamo_fbx_parser.py` in Maya, and put ground truth skinning information of characters in `{MIXAMO_PATH}/rig_info`.
    The data format should be the same as in `rig_info` in [RigNet dataset](https://github.com/zhan-xu/RigNet). 
 6. Run `python data_proc/mixamo_simplify.py` to make sure the triangle numbers are less than 5000.  
 7. Run `python data_proc/mixamo_preproc_simplify.py`
