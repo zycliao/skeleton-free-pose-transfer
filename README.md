@@ -48,6 +48,7 @@ All paths are defined in `global_var.py`
 #### SMPL
 Download SMPLH model from [here](https://mano.is.tue.mpg.de/) and extract.
 Set the `SMPLH_PATH` in `global_var.py` to the folder it is extracted to.
+[Here](https://drive.google.com/file/d/1plOnfVh0-Et0PFLf5Qf-LFKbmefRJUjD/view?usp=drive_link) is the simplified SMPL mesh used in our training.
 
 #### Mixamo
 The training/testing split we used for the paper can be downloaded [here](https://drive.google.com/file/d/1Brw-DwvK77yRHtdO7Jb3epHho-zhIIj_/view?usp=sharing).
